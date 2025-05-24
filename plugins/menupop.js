@@ -21,10 +21,9 @@ async (conn, mek, m, { from, quoted, body, isCmd, command, args, q, isGroup, sen
 │🕹️ *ᴍᴏᴅᴇ:* *${config.MODE}*
 │🎯 *ᴘʀᴇғɪx:* *${config.PREFIX}*
 │💡 *ʀᴀᴍ ᴜsᴇ:* ${(process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2)} GB / ${Math.round(require('os').totalmem / 1024 / 1024)} GB
-│👑 *ᴅᴇᴠ:* *ᴘᴏᴘᴋɪᴅ ᴛᴇᴄʜ*
 │🚀 *ᴠᴇʀsɪᴏɴ:* *1.0.0*
 ╰–––––––––––––––––––––––––
-> ©𝗱𝗲𝘃 𝗽𝗼𝗽𝗸𝗶𝗱🎮
+> © 𝙱𝚎𝚕𝚝𝚊𝚑 𝚃𝚎𝚌𝚑 | 𝙽𝚎𝚝 𝚄𝚙𝚍𝚊𝚝𝚎𝚜🎮
 
 ---
 📚 *DOWNLOAD COMMANDS*
