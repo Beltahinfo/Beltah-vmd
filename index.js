@@ -139,7 +139,7 @@ authentification();
   console.log('Plugins installed successful ✅')
   console.log('Bot connected to whatsapp 🪆')
 
-	  //Context to read forwarded info 
+	/*  //Context to read forwarded info 
 	  const getContextInfo1 = (title = '', userJid = '', thumbnailUrl = '', conf = {}) => ({
   mentionedJid: userJid ? [userJid] : [],
   forwardingScore: 999,
@@ -158,7 +158,7 @@ authentification();
     mediaType: 1,
     renderLargerThumbnail: false,
   }
-});
+});*/
 
 
   // --- NEW: Initialize the call handler here ---
@@ -168,13 +168,14 @@ authentification();
   let up = `Thank you for deploying *BELTAH-MD*
   
   > Powered by Beltah Hacking Team`;
-    /*conn.sendMessage(conn.user.id, { image: { url: `https://files.catbox.moe/e6rhto.jpg` }, caption: up })
+	  
+    conn.sendMessage(conn.user.id, { image: { url: `https://files.catbox.moe/e6rhto.jpg` }, caption: up })
   }
-  })*/
-	  conn.sendMessage(conn.user.id, {
+  })
+	  /*conn.sendMessage(conn.user.id, {
                 text: up,
                 contextInfo: getContextInfo1('BELTAH-MD ACTIVATED ✅', conn.user.id),
-            });
+            });*/
   conn.ev.on('creds.update', saveCreds)
 
   //==============================
