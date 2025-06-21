@@ -3,19 +3,13 @@ const { cmd, commands } = require('../command');
 const os = require("os")
 const { runtime } = require('../lib/functions')
 const axios = require('axios')
-// Constants
-const DEFAULT_PARTICIPANT = '0@s.whatsapp.net';
-const DEFAULT_REMOTE_JID = 'status@broadcast';
-const DEFAULT_THUMBNAIL_URL = 'https://telegra.ph/file/dcce2ddee6cc7597c859a.jpg';
-const DEFAULT_TITLE = "BELTAH-MD MENU";
-const DEFAULT_BODY = "Your AI Assistant Chuddy Buddy";
 
 // Default message configuration
 const fgg = {
   key: {
     fromMe: false,
-    participant: DEFAULT_PARTICIPANT,
-    remoteJid: DEFAULT_REMOTE_JID,
+    participant: '0@s.whatsapp.net',
+    remoteJid: 'status@broadcast',
   },
   message: {
     contactMessage: {
@@ -300,18 +294,31 @@ cmd({
 
 > Powered by Beltah Tech🎲`;
 
-      const sendername = sender;
-      await conn.sendMessage(from, {
-        text: desc,
-        contextInfo: getContextInfo("BELTAH-MD MAIN MENU", sendername, DEFAULT_THUMBNAIL_URL)
-      }, { quoted: fgg });
+      conn.sendMessage(
+            from,
+            {
+                image: { url: config.MENU_IMAGE_URL || '' },
+                caption: dec,
+                contextInfo: {
+                    mentionedJid: [m.sender],
+                    forwardingScore: 999,
+                    isForwarded: true,
+                    forwardedNewsletterMessageInfo: {
+                        newsletterJid: '120363249464136503@newsletter',
+                        newsletterName: config.BOT_NAME,
+                        serverMessageId: 143
+                    }
+                }
+            },
+            { quoted: fgg }
+        );
 
       // Send audio
       await conn.sendMessage(from, {
         audio: { url: 'https://files.catbox.moe/kxdej4.m4a' },
         mimetype: 'audio/mp4',
         ptt: true
-      }, { quoted: mek });
+      }, { quoted: fgg });
 
     } catch (e) {
       console.log(e);
