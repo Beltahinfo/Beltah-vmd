@@ -3,6 +3,59 @@ const { cmd, commands } = require('../command');
 const os = require("os")
 const {runtime} = require('../lib/functions')
 const axios = require('axios')
+// Constants
+const DEFAULT_PARTICIPANT = '0@s.whatsapp.net';
+const DEFAULT_REMOTE_JID = 'status@broadcast';
+const DEFAULT_THUMBNAIL_URL = 'https://telegra.ph/file/dcce2ddee6cc7597c859a.jpg';
+const DEFAULT_TITLE = "BELTAH-MD MENU";
+const DEFAULT_BODY = "Your AI Assistant Chuddy Buddy";
+
+// Default message configuration
+const fgg = {
+  key: {
+    fromMe: false,
+    participant: DEFAULT_PARTICIPANT,
+    remoteJid: DEFAULT_REMOTE_JID,
+  },
+  message: {
+    contactMessage: {
+      displayName: `Beltah Tech Info`,
+      vcard: `BEGIN:VCARD\nVERSION:3.0\nN:;BELTAH MD;;;\nFN:BELTAH MD\nitem1.TEL;waid=${DEFAULT_PARTICIPANT.split('@')[0]}:${DEFAULT_PARTICIPANT.split('@')[0]}\nitem1.X-ABLabel:Ponsel\nEND:VCARD`,
+    },
+  },
+};
+
+/**
+ * Construct contextInfo object for messages.
+ * @param {string} title - Title for the external ad reply.
+ * @param {string} userJid - User JID to mention.
+ * @param {string} thumbnailUrl - Thumbnail URL.
+ * @returns {object} - ContextInfo object.
+ */
+function getContextInfo(title = DEFAULT_TITLE, userJid = DEFAULT_PARTICIPANT, thumbnailUrl = DEFAULT_THUMBNAIL_URL) {
+  try {
+    return {
+      mentionedJid: [userJid],
+      forwardingScore: 999,
+      isForwarded: true,
+      forwardedNewsletterMessageInfo: {
+         newsletterJid: "120363249464136503@newsletter",
+         newsletterName: "🤖 𝐁𝐄𝐋𝐓𝐀𝐇 𝐀𝐈 𝐂𝐇𝐀𝐓𝐁𝐎𝐓 🤖",
+         serverMessageId: Math.floor(100000 + Math.random() * 900000),
+     },
+      externalAdReply: {
+        showAdAttribution: true,
+        title,
+        body: DEFAULT_BODY,
+        thumbnailUrl,
+        sourceUrl: settings.GURL || '',
+      },
+    };
+  } catch (error) {
+    console.error(`Error in getContextInfo: ${error.message}`);
+    return {}; // Prevent breaking on error
+  }
+}
 
 cmd({
     pattern: "menu",
@@ -244,9 +297,15 @@ async (conn, mek, m, { from, quoted, body, isCmd, command, args, q, isGroup, sen
 * 🌐 .define
 * 🌐 .dailyfact
 
-> ᴘᴏᴡᴇʀᴇᴅ ʙʏ ᴘᴏᴘᴋɪᴅ🎲`;
+> Powered by Beltah Tech🎲`;
+        
+    const sendername = m.sender ;
+        await conn.sendMessage(from, {
+             text: desc,
+             contextInfo: getContextInfo("BELTAH-MD MAIN MENU",sendername , 'https://telegra.ph/file/dcce2ddee6cc7597c859a.jpg')
+         }, { quoted: fgg });
 
-        await conn.sendMessage(
+       /* await conn.sendMessage(
             from,
             {
                 image: { url: `https://files.catbox.moe/e6rhto.jpg` },
@@ -263,7 +322,7 @@ async (conn, mek, m, { from, quoted, body, isCmd, command, args, q, isGroup, sen
                 }
             },
             { quoted: mek }
-        );
+        );*/
 
         // Send audio
         await conn.sendMessage(from, {
