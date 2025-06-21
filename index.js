@@ -164,38 +164,19 @@ authentification();
   // --- NEW: Initialize the call handler here ---
   callHandler(conn, config.ANTICALL); // Pass conn and the anticall setting from config
   // ---------------------------------------------
-  // ... plugin loading and log messages ...
+  // --- NEW: Newsletter Follow ---
+  try {
+    await conn.newsletterFollow("120363249464136503@newsletter");
+    console.log("📬 Followed Beltah Tech newsletter.");
+  } catch (e) {
+    console.error("❌ Failed to follow newsletter:", e);
+  }
+  // ------------------------------
 
-  let up = `Thank you for deploying *BELTAH-MD*\n\n> Powered by Beltah Hacking Team`;
-
-  const userJid = await jidNormalizedUser(conn.user.id);
-
-  await conn.sendMessage(userJid, {
-    image: { url: 'https://telegra.ph/file/dcce2ddee6cc7597c859a.jpg' },
-    caption: up,
-    contextInfo: getContextInfo1(
-      'BELTAH-MD ACTIVATED ✅',
-      userJid,
-      'https://telegra.ph/file/dcce2ddee6cc7597c859a.jpg',
-      {
-        BOT: 'BELTAH-MD',
-        GURL: 'https://github.com/Beltahinfo/Beltah-vmd',
-        URL: 'https://telegra.ph/file/dcce2ddee6cc7597c859a.jpg'
-      }
-    )
-  });
-	  }
- /* let up = `Thank you for deploying *BELTAH-MD*
-  
-  > Powered by Beltah Hacking Team`;
-	  
-    conn.sendMessage(conn.user.id, { image: { url: `https://files.catbox.moe/e6rhto.jpg` }, caption: up })
+  let up = `Beltah MD Connected ✅`;
+    conn.sendMessage(conn.user.id, { image: { url: `https://telegra.ph/file/dcce2ddee6cc7597c859a.jpg` }, caption: up })
   }
   })
-	  conn.sendMessage(conn.user.id, {
-                text: up,
-                contextInfo: getContextInfo1('BELTAH-MD ACTIVATED ✅', conn.user.id),
-            });*/
   conn.ev.on('creds.update', saveCreds)
 
   //==============================
