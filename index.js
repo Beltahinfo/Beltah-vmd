@@ -139,14 +139,40 @@ authentification();
   console.log('Plugins installed successful ✅')
   console.log('Bot connected to whatsapp 🪆')
 
+	  //Context to read forwarded info 
+	  const getContextInfo1 = (title = '', userJid = '', thumbnailUrl = '', conf = {}) => ({
+  mentionedJid: userJid ? [userJid] : [],
+  forwardingScore: 999,
+  isForwarded: true,
+  forwardedNewsletterMessageInfo: {
+    newsletterJid: "120363249464136503@newsletter",
+    newsletterName: "Beltah Tech Info ",
+    serverMessageId: Math.floor(100000 + Math.random() * 900000),
+  },
+  externalAdReply: {
+    showAdAttribution: true,
+    title: conf.BOT || '',
+    body: title || "",
+    thumbnailUrl: thumbnailUrl || conf.URL || 'https://telegra.ph/file/dcce2ddee6cc7597c859a.jpg',
+    sourceUrl: conf.GURL || '',
+    mediaType: 1,
+    renderLargerThumbnail: false,
+  }
+});
+
+
   // --- NEW: Initialize the call handler here ---
   callHandler(conn, config.ANTICALL); // Pass conn and the anticall setting from config
   // ---------------------------------------------
 
   let up = `Meta AI Bot connected ✅`;
-    conn.sendMessage(conn.user.id, { image: { url: `https://files.catbox.moe/e6rhto.jpg` }, caption: up })
+    /*conn.sendMessage(conn.user.id, { image: { url: `https://files.catbox.moe/e6rhto.jpg` }, caption: up })
   }
-  })
+  })*/
+	  await conn.sendMessage(conn.user.id, {
+                text: up,
+                contextInfo: getContextInfo1('BELTAH-MD ACTIVATED ✅', conn.user.id),
+            });
   conn.ev.on('creds.update', saveCreds)
 
   //==============================
