@@ -43,6 +43,7 @@ const {
   const Crypto = require('crypto')
   const path = require('path')
   const prefix = config.PREFIX
+const port = process.env.PORT || 3000;
 const express = require('express');
 const app = express();
 
