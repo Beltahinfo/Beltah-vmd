@@ -172,11 +172,24 @@ authentification();
     console.error("❌ Failed to follow newsletter:", e);
   }
   // ------------------------------
+// ... previous code remains unchanged
 
-  let up = `Beltah MD Connected ✅`;
-    conn.sendMessage(conn.user.id, { image: { url: `https://telegra.ph/file/dcce2ddee6cc7597c859a.jpg` }, caption: up })
+let up = `Beltah MD Connected ✅`;
+conn.sendMessage(
+  conn.user.id,
+  {
+    text: up,
+    contextInfo: getContextInfo1(
+      up, // title
+      "", // userJid
+      "https://telegra.ph/file/dcce2ddee6cc7597c859a.jpg", // thumbnailUrl
+      config // conf, so it can fill in BOT, URL, GURL, etc. from your config
+    )
   }
-  })
+);
+
+// ... following code remains unchanged
+  
   conn.ev.on('creds.update', saveCreds)
 
   //==============================
