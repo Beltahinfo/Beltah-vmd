@@ -70,7 +70,7 @@ const {
   setInterval(clearTempDir, 5 * 60 * 1000);
 //===================SESSION-AUTH============================
 //const config = require('./config');
-require('dotenv').config({ path: "./config.env" });
+//require('dotenv').config({ path: "./config.env" });
 
 /**
  * Reads and writes the session file from a base64 SESSION_ID
