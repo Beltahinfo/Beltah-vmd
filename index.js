@@ -68,25 +68,40 @@ const {
 
   // Clear the temp directory every 5 minutes
   setInterval(clearTempDir, 5 * 60 * 1000);
-  //===================SESSION-AUTH============================
-require('dotenv').config({
-  'path': "./config.env"
-});
-var session = config.SESSION_ID ? config.SESSION_ID.replace(/BELTAH-MD;;;=>/g, "") : "";
-const prefix = config.PREFIX || [];
+//===================SESSION-AUTH============================
+const fs = require('fs');
+const config = require('./config');
+require('dotenv').config({ path: "./config.env" });
+
+/**
+ * Reads and writes the session file from a base64 SESSION_ID
+ */
 async function authentification() {
   try {
-    if (!fs.existsSync(__dirname + "/sessions/creds.json")) {
-      console.log("connected successfully...");
-      await fs.writeFileSync(__dirname + "/sessions/creds.json", Buffer.from(session, "base64"), "utf8");
-    } else if (fs.existsSync(__dirname + "/sessions/creds.json") && session != "zokk") {
-      await fs.writeFileSync(__dirname + "/sessions/creds.json", Buffer.from(session, "base64"), "utf8");
+    // Get the base64 session string from config, removing any prefix if present
+    let session = config.SESSION_ID
+      ? config.SESSION_ID.replace(/^BELTAH-MD;;;=>/, "")
+      : "";
+
+    if (!session) {
+      console.log("Please add your session to SESSION_ID env !!");
+      return;
+    }
+
+    const credsPath = __dirname + "/sessions/creds.json";
+
+    // Only write if file doesn't exist or session is not a dummy value
+    if (!fs.existsSync(credsPath) || session !== "zokk") {
+      // Decode base64 and write to creds.json
+      fs.writeFileSync(credsPath, Buffer.from(session, "base64"), "utf8");
+      console.log("Session downloaded ✅");
     }
   } catch (e) {
     console.log("Session Invalid " + e);
     return;
   }
 }
+
 authentification();
 //=============================================
 
