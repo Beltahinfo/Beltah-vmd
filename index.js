@@ -139,7 +139,7 @@ authentification();
   console.log('Plugins installed successful ✅')
   console.log('Bot connected to whatsapp 🪆')
 
-	/*  //Context to read forwarded info 
+	  //Context to read forwarded info 
 	  const getContextInfo1 = (title = '', userJid = '', thumbnailUrl = '', conf = {}) => ({
   mentionedJid: userJid ? [userJid] : [],
   forwardingScore: 999,
@@ -158,7 +158,7 @@ authentification();
     mediaType: 1,
     renderLargerThumbnail: false,
   }
-});*/
+});
 
 
   // --- NEW: Initialize the call handler here ---
