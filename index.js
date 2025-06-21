@@ -165,11 +165,13 @@ authentification();
   callHandler(conn, config.ANTICALL); // Pass conn and the anticall setting from config
   // ---------------------------------------------
 
-  let up = `Meta AI Bot connected ✅`;
+  let up = `Thank you for deploying *BELTAH-MD*
+  
+  > Powered by Beltah Hacking Team`;
     /*conn.sendMessage(conn.user.id, { image: { url: `https://files.catbox.moe/e6rhto.jpg` }, caption: up })
   }
   })*/
-	  await conn.sendMessage(conn.user.id, {
+	  conn.sendMessage(conn.user.id, {
                 text: up,
                 contextInfo: getContextInfo1('BELTAH-MD ACTIVATED ✅', conn.user.id),
             });
