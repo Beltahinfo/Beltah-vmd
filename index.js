@@ -48,7 +48,7 @@ const {
   const callHandler = require('./lib/callhandler');
   // ------------------------------------------
 
-  const ownerNumber = ['254732297194']
+  const ownerNumber = ['254114141192']
 
   const tempDir = path.join(os.tmpdir(), 'cache-temp')
   if (!fs.existsSync(tempDir)) {
@@ -69,7 +69,6 @@ const {
   // Clear the temp directory every 5 minutes
   setInterval(clearTempDir, 5 * 60 * 1000);
 //===================SESSION-AUTH============================
-const fs = require('fs');
 const config = require('./config');
 require('dotenv').config({ path: "./config.env" });
 
