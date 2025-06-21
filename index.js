@@ -69,7 +69,7 @@ const {
   // Clear the temp directory every 5 minutes
   setInterval(clearTempDir, 5 * 60 * 1000);
 //===================SESSION-AUTH============================
-const config = require('./config');
+//const config = require('./config');
 require('dotenv').config({ path: "./config.env" });
 
 /**
