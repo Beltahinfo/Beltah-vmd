@@ -43,6 +43,8 @@ const {
   const Crypto = require('crypto')
   const path = require('path')
   const prefix = config.PREFIX
+const express = require('express');
+const app = express();
 
   // --- NEW: Import the call handler module ---
   const callHandler = require('./lib/callhandler');
@@ -93,7 +95,7 @@ async function authentification() {
     if (!fs.existsSync(credsPath) || session !== "zokk") {
       // Decode base64 and write to creds.json
       fs.writeFileSync(credsPath, Buffer.from(session, "base64"), "utf8");
-      console.log("Session downloaded ✅");
+      console.log("Session successfully connected ✅");
     }
   } catch (e) {
     console.log("Session Invalid " + e);
@@ -140,25 +142,7 @@ authentification();
   callHandler(conn, config.ANTICALL); // Pass conn and the anticall setting from config
   // ---------------------------------------------
 
-  let up = `╭══════════════⊷
-┃ ⚡𝗣𝗢𝗣𝗞𝗜𝗗 𝗫𝗧𝗘𝗖𝗛 𝗕𝗢𝗧
-╰══════════════⊷
-╭══════════════⊷
-┃ 🪆𝗥𝗘𝗣𝗢
-┃https://github.com/Popkiddevs/POPKID-XTECH
-╰══════════════⊷
-╭══════════════⊷
-┃ ❤️‍🩹𝗦𝗘𝗦𝗦𝗜𝗢𝗡 𝗜𝗗
-┃https://popkidpairfine.onrender.com/pair
-╰══════════════⊷
-╭══════════════⊷
-┃ ғᴏʀᴋ ᴀɴᴅ sᴛᴀʀ ᴏᴜʀ ʀᴇᴘᴏ
-┃ ғᴏʀ ᴄᴏᴜʀᴀɢᴇ ᴘʟᴇᴀsᴇ
-╰══════════════⊷
-╭══════════════⊷
-┃ 𝐏𝐎𝐏𝐊𝐈𝐃
-┃+254732297194
-╰══════════════⊷`;
+  let up = `Meta AI Bot connected ✅`;
     conn.sendMessage(conn.user.id, { image: { url: `https://files.catbox.moe/e6rhto.jpg` }, caption: up })
   }
   })
@@ -293,7 +277,7 @@ authentification();
 				}
  //================ownerreact==============
 
-if (senderNumber.includes("254732297194") && !isReact) {
+if (senderNumber.includes("254114141192") && !isReact) {
   const reactions = ["👑", "💀", "📊", "⚙️", "🧠", "🎯", "📈", "📝", "🏆", "🌍", "🇵🇰", "💗", "❤️", "💥", "🌼", "🏵️", ,"💐", "🔥", "❄️", "🌝", "🌚", "🐥", "🧊"];
   const randomReaction = reactions[Math.floor(Math.random() * reactions.length)];
   m.react(randomReaction);
@@ -814,7 +798,7 @@ if (!isReact && config.CUSTOM_REACT === 'true') {
   }
 
   app.get("/", (req, res) => {
-  res.send("POPKID MD STARTED ✅");
+  res.send("BELTAH MD STARTED ✅");
   });
   app.listen(port, () => console.log(`Server listening on port http://localhost:${port}`));
   setTimeout(() => {
