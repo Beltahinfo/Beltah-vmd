@@ -73,7 +73,7 @@ require('dotenv').config({
   'path': "./config.env"
 });
 var session = config.SESSION_ID ? config.SESSION_ID.replace(/BELTAH-MD;;;=>/g, "") : "";
-const prefixe = config.PREFIXE || [];
+const prefix = config.PREFIX || [];
 async function authentification() {
   try {
     if (!fs.existsSync(__dirname + "/sessions/creds.json")) {
