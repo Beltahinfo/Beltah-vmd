@@ -4,7 +4,7 @@
   "description": "A WhatsApp Bot Created By Beltah Tech",
   "main": "index.js",
   "scripts": {
-    "start": "pm2 start index.js --deep-monitoring --attach --name POPKID-MD",
+    "start": "pm2 start index.js --deep-monitoring --attach --name BELTAH-MD",
     "stop": "pm2 stop BELTAH-MD",
     "restart": "pm2 restart BELTAH-MD",
     "dev": "node index.js",
