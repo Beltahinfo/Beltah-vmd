@@ -1,14 +1,14 @@
 {
-  "name": "POPKID-MD",
+  "name": "BELTAH-MD",
   "version": "4.0.0",
-  "description": "A WhatsApp Bot Created By POPKID",
+  "description": "A WhatsApp Bot Created By Beltah Tech",
   "main": "index.js",
   "scripts": {
     "start": "pm2 start index.js --deep-monitoring --attach --name POPKID-MD",
-    "stop": "pm2 stop POPKID-MD",
-    "restart": "pm2 restart POPKID-MD",
+    "stop": "pm2 stop BELTAH-MD",
+    "restart": "pm2 restart BELTAH-MD",
     "dev": "node index.js",
-    "logs": "pm2 logs POPKID-MD"
+    "logs": "pm2 logs BELTAH-MD"
   },
   "dependencies": {
     "@whiskeysockets/baileys": "npm:@fizzxydev/baileys-pro@8.5.12",
