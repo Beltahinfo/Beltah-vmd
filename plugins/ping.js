@@ -32,7 +32,10 @@ async (conn, mek, m, { from, quoted, sender, reply }) => {
         const end = new Date().getTime();
         const responseTime = (end - start) / 1000;
 
-        const text = `> *POPKID-XTECH SPEED: ${responseTime.toFixed(2)}ms ${reactionEmoji}*`;
+        const text = `*📡 PING RESULTS 📡*
+
+*🌐 Latency:* ${responseTime.toFixed(2)}ms ${reactionEmoji}* 
+> *⚡ Powered by Beltah Tech Team*`;
 
         await conn.sendMessage(from, {
             text,
@@ -42,7 +45,7 @@ async (conn, mek, m, { from, quoted, sender, reply }) => {
                 isForwarded: true,
                 forwardedNewsletterMessageInfo: {
                     newsletterJid: '120363290715861418@newsletter',
-                    newsletterName: "PopkidXtech",
+                    newsletterName: "Beltah Tech Info",
                     serverMessageId: 143
                 }
             }
@@ -66,10 +69,13 @@ cmd({
 async (conn, mek, m, { from, quoted, body, isCmd, command, args, q, isGroup, sender, senderNumber, botNumber2, botNumber, pushname, isMe, isOwner, groupMetadata, groupName, participants, groupAdmins, isBotAdmins, isAdmins, reply }) => {
     try {
         const startTime = Date.now()
-        const message = await conn.sendMessage(from, { text: '*PINGING...*' })
+        const message = await conn.sendMessage(from, { text: '*BELTAH-MD pinging from the saver...*' })
         const endTime = Date.now()
         const ping = endTime - startTime
-        await conn.sendMessage(from, { text: `*🔥 POPKID-MD SPEED : ${ping}ms*` }, { quoted: message })
+        await conn.sendMessage(from, { text: `**📡 PING 2 RESULTS 📡*
+
+*🌐 Latency:* ${ping}ms* 
+> *⚡ Powered by Beltah Tech Team*` }, { quoted: message })
     } catch (e) {
         console.log(e)
         reply(`${e}`)
