@@ -16,24 +16,24 @@ cmd({
     if (!isOwner) return reply("This command is only for the bot owner.");
 
     try {
-        await reply("🔍 Checking for POPKID-MD updates...");
+        await reply("🔍 Checking for BELTAH-MD updates...");
 
         // Fetch the latest commit hash from GitHub
-        const { data: commitData } = await axios.get("https://api.github.com/repos/popkidxtech/ZIPPY-XTECH/commits/main");
+        const { data: commitData } = await axios.get("https://api.github.com/repos/Beltahinfo/Beltah-vmd/commits/main");
         const latestCommitHash = commitData.sha;
 
         // Get the stored commit hash from the database
         const currentHash = await getCommitHash();
 
         if (latestCommitHash === currentHash) {
-            return reply("✅ Your POPKID-MD bot is already up-to-date!");
+            return reply("✅ Your BELTAH-MD bot is already up-to-date!");
         }
 
-        await reply("🚀 Updating POPKID-MD Bot...");
+        await reply("🚀 Updating BELTAH-MD...");
 
         // Download the latest code
         const zipPath = path.join(__dirname, "latest.zip");
-        const { data: zipData } = await axios.get("https://github.com/popkidxtech/ZIPPY-XTECH/archive/main.zip", { responseType: "arraybuffer" });
+        const { data: zipData } = await axios.get("https://github.com/Beltahinfo/Beltah-vmd/archive/main.zip", { responseType: "arraybuffer" });
         fs.writeFileSync(zipPath, zipData);
 
         // Extract ZIP file
@@ -44,7 +44,7 @@ cmd({
 
         // Copy updated files, preserving config.js and app.json
         await reply("🔄 Replacing files...");
-        const sourcePath = path.join(extractPath, "POPKID-XTECH-main");
+        const sourcePath = path.join(extractPath, "Beltah-vmd-main");
         const destinationPath = path.join(__dirname, '..');
         copyFolderSync(sourcePath, destinationPath);
 
