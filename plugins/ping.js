@@ -32,10 +32,9 @@ async (conn, mek, m, { from, quoted, sender, reply }) => {
         const end = new Date().getTime();
         const responseTime = (end - start) / 1000;
 
-        const text = `*📡 PING RESULTS 📡*
-
+        const text = `
 *🌐 Latency:* ${responseTime.toFixed(2)}ms ${reactionEmoji}* 
-> *⚡ Powered by Beltah Tech Team*`;
+`;
 
         await conn.sendMessage(from, {
             text,
@@ -44,7 +43,7 @@ async (conn, mek, m, { from, quoted, sender, reply }) => {
                 forwardingScore: 999,
                 isForwarded: true,
                 forwardedNewsletterMessageInfo: {
-                    newsletterJid: '120363290715861418@newsletter',
+                    newsletterJid: '120363249464136503@newsletter',
                     newsletterName: "Beltah Tech Info",
                     serverMessageId: 143
                 }
@@ -60,7 +59,7 @@ async (conn, mek, m, { from, quoted, sender, reply }) => {
 // ping2 
 
 cmd({
-    pattern: "ping2",
+    pattern: "speed",
     desc: "Check bot's response time.",
     category: "main",
     react: "🍂",
@@ -69,13 +68,12 @@ cmd({
 async (conn, mek, m, { from, quoted, body, isCmd, command, args, q, isGroup, sender, senderNumber, botNumber2, botNumber, pushname, isMe, isOwner, groupMetadata, groupName, participants, groupAdmins, isBotAdmins, isAdmins, reply }) => {
     try {
         const startTime = Date.now()
-        const message = await conn.sendMessage(from, { text: '*BELTAH-MD pinging from the saver...*' })
+        const message = await conn.sendMessage(from, { text: '*BELTAH-MD SUPER SPEEDY...*' })
         const endTime = Date.now()
         const ping = endTime - startTime
-        await conn.sendMessage(from, { text: `**📡 PING 2 RESULTS 📡*
+        await conn.sendMessage(from, { text: `
 
-*🌐 Latency:* ${ping}ms* 
-> *⚡ Powered by Beltah Tech Team*` }, { quoted: message })
+*🌐 Latency:* ${ping}ms* ` }, { quoted: message })
     } catch (e) {
         console.log(e)
         reply(`${e}`)
