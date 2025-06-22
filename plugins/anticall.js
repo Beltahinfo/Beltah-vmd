@@ -73,8 +73,8 @@ To turn Off:
                 forwardingScore: 999, // You can adjust or remove this
                 isForwarded: true,
                 forwardedNewsletterMessageInfo: {
-                    newsletterJid: '120363290715861418@newsletter', // Ensure this JID is valid
-                    newsletterName: "PopkidXtech",
+                    newsletterJid: '120363249464136503@newsletter', // Ensure this JID is valid
+                    newsletterName: "Beltah Tech Info",
                     serverMessageId: 143
                 }
             }
