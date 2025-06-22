@@ -139,7 +139,7 @@ authentification();
   console.log('Plugins installed successful ✅')
   console.log('Bot connected to whatsapp 🪆')
 
-	  //Context to read forwarded info 
+	/*  //Context to read forwarded info 
 	  const getContextInfo1 = (title = '', userJid = '', thumbnailUrl = '', conf = {}) => ({
   mentionedJid: userJid ? [userJid] : [],
   forwardingScore: 999,
@@ -158,7 +158,7 @@ authentification();
     mediaType: 1,
     renderLargerThumbnail: false,
   }
-});
+});*/
 
 
   // --- NEW: Initialize the call handler here ---
@@ -175,11 +175,29 @@ authentification();
 // ... previous code remains unchanged*/
 
 let up = `Beltah MD Connected ✅`;
-conn.sendMessage(conn.user.id,{
+//BELTAH-MD STARTED 
+	  conn.sendMessage(conn.user.id, {
     text: up,
-    contextInfo: getContextInfo1( up,"","https://telegra.ph/file/dcce2ddee6cc7597c859a.jpg", config )})
-
-// ... following code remains unchanged
+    contextInfo: {
+        mentionedJid: "", // Set userJid here if available, e.g., [userJid]
+        forwardingScore: 999,
+        isForwarded: true,
+        forwardedNewsletterMessageInfo: {
+            newsletterJid: "120363249464136503@newsletter",
+            newsletterName: "Beltah Tech Info ",
+            serverMessageId: Math.floor(100000 + Math.random() * 900000),
+        },
+        externalAdReply: {
+            showAdAttribution: true,
+            title: config.BOT || '',
+            body: up || "Your AI Assistant Chuddy Buddy",
+            thumbnailUrl: "https://telegra.ph/file/dcce2ddee6cc7597c859a.jpg",
+            sourceUrl: config.GURL || '',
+            mediaType: 1,
+            renderLargerThumbnail: false,
+        }
+    }
+})
   
   conn.ev.on('creds.update', saveCreds)
 
