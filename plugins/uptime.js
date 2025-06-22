@@ -20,25 +20,24 @@ async (conn, mek, m, { from, quoted, body, isCmd, command, args, q, isGroup, sen
         const usedMem = (process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2); // Used RAM in MB
 
         // Compact and attractive system status message
-        const status = `┌─〔 *🧊 ᴘᴏᴘᴋɪᴅ xᴛᴇᴄʜ 🚀* 〕─⬣
+        const status = `┌─〔 *BELTAH-MD ALIVE* 〕─⬣
 │ ⏱ *Uptime:* ${runtime(process.uptime())}
 │ 📦 *RAM:* ${usedMem}MB / ${totalMem}MB
 │ 🖥 *Platform:* ${platform}
-│ 👑 *Owner:* popkid
-│ 🧪 *Version:* 1.0.0 BETA
+│ 👑 *Owner:* Beltahinfo 
+│ 🧪 *Version:* 1.6.0 BETA
 └───────────────⬣`;
 
-        // Send image + caption + audio
+        // Send caption + audio
         await conn.sendMessage(from, { 
-            image: { url: `https://files.catbox.moe/lkmvah.jpg` },  
             caption: status,
             contextInfo: {
                 mentionedJid: [m.sender],
                 forwardingScore: 999,
                 isForwarded: true,
                 forwardedNewsletterMessageInfo: {
-                    newsletterJid: '120363290715861418@newsletter',
-                    newsletterName: '𝐏𝐎𝐏𝐊𝐈𝐃 𝐀𝐋𝐈𝐕𝐄🩷',
+                    newsletterJid: '120363249464136503@newsletter',
+                    newsletterName: 'Beltah Tech Info',
                     serverMessageId: 143
                 }
             }
