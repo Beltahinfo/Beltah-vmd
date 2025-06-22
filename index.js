@@ -857,3 +857,4 @@ if (!isReact && config.CUSTOM_REACT === 'true') {
   setTimeout(() => {
   connectToWA()
   }, 4000);
+  } //fixed end of input 
