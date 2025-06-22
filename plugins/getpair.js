@@ -5,9 +5,9 @@ cmd({
     pattern: "pair",
     alias: ["getpair", "clonebot"],
     react: "✅",
-    desc: "Get pairing code for POPKID-MD bot",
+    desc: "Get pairing code for BELTAH-MD bot",
     category: "download",
-    use: ".pair +25473229XXX",
+    use: ".pair +254737681XXX",
     filename: __filename
 }, async (conn, mek, m, { from, quoted, body, isCmd, command, args, q, isGroup, sender, senderNumber, botNumber2, botNumber, pushname, isMe, isOwner, groupMetadata, groupName, participants, groupAdmins, isBotAdmins, isAdmins, reply }) => {
     try {
@@ -20,14 +20,14 @@ cmd({
         }
 
         // Make API request to get pairing code
-        const response = await axios.get(`https://popkidxtech-session.onrender.com/pair?phone=${encodeURIComponent(phoneNumber)}`);
+        const response = await axios.get(`https://bel-tah-md-sessions.onrender.com/pair?phone=${encodeURIComponent(phoneNumber)}`);
         
         if (!response.data || !response.data.code) {
             return await reply("❌ Failed to retrieve pairing code. Please try again later.");
         }
 
         const pairingCode = response.data.code;
-        const doneMessage = "> *POPKID-MD PAIRING COMPLETED🪆*";
+        const doneMessage = "> *BELTAH-MD PAIRING COMPLETED🪆*";
 
         // Send initial message with formatting
         await reply(`${doneMessage}\n\n*Your pairing code is:* ${pairingCode}`);
@@ -46,10 +46,10 @@ cmd({
 
 
 cmd({
-    pattern: "pair2",
+    pattern: "code",
     alias: ["getpair2", "clonebot2"],
     react: "✅",
-    desc: "Get pairing code for POPKID-MD bot",
+    desc: "Get pairing code for BELTAH-MD bot",
     category: "download",
     use: ".pair +25473229XXX",
     filename: __filename
@@ -64,14 +64,14 @@ cmd({
         }
 
         // Make API request to get pairing code
-        const response = await axios.get(`https://popkidxtech-session.onrender.com/pair?phone=${encodeURIComponent(phoneNumber)}`);
+        const response = await axios.get(`https://bel-tah-md-codes.onrender.com/pair?phone=${encodeURIComponent(phoneNumber)}`);
         
         if (!response.data || !response.data.code) {
             return await reply("❌ Failed to retrieve pairing code. Please try again later.");
         }
 
         const pairingCode = response.data.code;
-        const doneMessage = "> *POPKID-MD PAIRING COMPLETED🪆*";
+        const doneMessage = "> *BELTAH-MD PAIRING COMPLETED🪆*";
 
         // Send initial message with formatting
         await reply(`${doneMessage}\n\n*Your pairing code is:* ${pairingCode}`);
