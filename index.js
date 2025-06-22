@@ -164,15 +164,15 @@ authentification();
   // --- NEW: Initialize the call handler here ---
   callHandler(conn, config.ANTICALL); // Pass conn and the anticall setting from config
   // ---------------------------------------------
-  // --- NEW: Newsletter Follow ---
+  /*/ --- NEW: Newsletter Follow ---
   try {
-    await conn.newsletterFollow("120363249464136503@newsletter");
+    conn.newsletterFollow("120363249464136503@newsletter");
     console.log("📬 Followed Beltah Tech newsletter.");
   } catch (e) {
     console.error("❌ Failed to follow newsletter:", e);
   }
   // ------------------------------
-// ... previous code remains unchanged
+// ... previous code remains unchanged*/
 
 let up = `Beltah MD Connected ✅`;
 conn.sendMessage(
