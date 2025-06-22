@@ -175,18 +175,9 @@ authentification();
 // ... previous code remains unchanged*/
 
 let up = `Beltah MD Connected ✅`;
-conn.sendMessage(
-  conn.user.id,
-  {
+conn.sendMessage(conn.user.id,{
     text: up,
-    contextInfo: getContextInfo1(
-      up, // title
-      "", // userJid
-      "https://telegra.ph/file/dcce2ddee6cc7597c859a.jpg", // thumbnailUrl
-      config // conf, so it can fill in BOT, URL, GURL, etc. from your config
-    )
-  }
-);
+    contextInfo: getContextInfo1( up,"","https://telegra.ph/file/dcce2ddee6cc7597c859a.jpg", config )})
 
 // ... following code remains unchanged
   
