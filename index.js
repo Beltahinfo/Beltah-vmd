@@ -43,6 +43,10 @@ const {
   const Crypto = require('crypto')
   const path = require('path')
   const prefix = config.PREFIX
+const port = process.env.PORT || 3000;
+const express = require('express');
+const app = express();
+
 
   // --- NEW: Import the call handler module ---
   const callHandler = require('./lib/callhandler');
@@ -69,8 +73,8 @@ const {
   // Clear the temp directory every 5 minutes
   setInterval(clearTempDir, 5 * 60 * 1000);
 //===================SESSION-AUTH============================
-const config = require('./config');
-require('dotenv').config({ path: "./config.env" });
+//const config = require('./config');
+//require('dotenv').config({ path: "./config.env" });
 
 /**
  * Reads and writes the session file from a base64 SESSION_ID
