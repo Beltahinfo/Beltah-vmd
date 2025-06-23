@@ -129,7 +129,8 @@ authentification();
   if (lastDisconnect.error.output.statusCode !== DisconnectReason.loggedOut) {
   connectToWA()
   }
-  } else if (connection === 'open') {
+  } else 
+	  /*if (connection === 'open') {
   console.log('🕹️ Installing Plugins')
   const path = require('path');
   fs.readdirSync("./plugins/").forEach((plugin) => {
@@ -147,11 +148,42 @@ authentification();
   let up = `BELTAH-MD CONNECTED`;
     conn.sendMessage(conn.user.id, { image: { url: `https://telegra.ph/file/dcce2ddee6cc7597c859a.jpg` }, caption: up })
   }
-  })
-  conn.ev.on('creds.update', saveCreds)
+  })*/
 
   //==============================
+// ... previous code above remains unchanged ...
 
+if (connection === 'open') {
+  console.log('🕹️ Installing Plugins')
+  const path = require('path');
+  fs.readdirSync("./plugins/").forEach((plugin) => {
+    if (path.extname(plugin).toLowerCase() == ".js") {
+      require("./plugins/" + plugin);
+    }
+  });
+  console.log('Plugins installed successful ✅')
+  console.log('Bot connected to whatsapp 🪆')
+
+  // --- NEW: Initialize the call handler here ---
+  callHandler(conn, config.ANTICALL); // Pass conn and the anticall setting from config
+  // ---------------------------------------------
+
+  let up = `BELTAH-MD CONNECTED`;
+  // Remove the image format and add forwarded format
+  // conn.sendMessage(conn.user.id, { image: { url: `https://telegra.ph/file/dcce2ddee6cc7597c859a.jpg` }, caption: up })
+  conn.sendMessage(conn.user.id, {
+    forward: true,
+    text: up,
+    forwardedNewsletterMessageInfo: {
+      newsletterJid: "120363249464136503@newsletter",
+      newsletterName: "Meta AI",
+      serverMessageId: Math.floor(100000 + Math.random() * 900000),
+    }
+  });
+}
+// ... rest of the code unchanged ...
+	  
+  conn.ev.on('creds.update', saveCreds)
   conn.ev.on('messages.update', async updates => {
     for (const update of updates) {
       if (update.update.message === null) {
