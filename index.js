@@ -73,12 +73,7 @@ const app = express();
   // Clear the temp directory every 5 minutes
   setInterval(clearTempDir, 5 * 60 * 1000);
 //===================SESSION-AUTH============================
-//const config = require('./config');
-//require('dotenv').config({ path: "./config.env" });
 
-/**
- * Reads and writes the session file from a base64 SESSION_ID
- */
 async function authentification() {
   try {
     // Get the base64 session string from config, removing any prefix if present
@@ -129,31 +124,7 @@ authentification();
   if (lastDisconnect.error.output.statusCode !== DisconnectReason.loggedOut) {
   connectToWA()
   }
-  } else 
-	  /*if (connection === 'open') {
-  console.log('🕹️ Installing Plugins')
-  const path = require('path');
-  fs.readdirSync("./plugins/").forEach((plugin) => {
-  if (path.extname(plugin).toLowerCase() == ".js") {
-  require("./plugins/" + plugin);
-  }
-  });
-  console.log('Plugins installed successful ✅')
-  console.log('Bot connected to whatsapp 🪆')
-
-  // --- NEW: Initialize the call handler here ---
-  callHandler(conn, config.ANTICALL); // Pass conn and the anticall setting from config
-  // ---------------------------------------------
-
-  let up = `BELTAH-MD CONNECTED`;
-    conn.sendMessage(conn.user.id, { image: { url: `https://telegra.ph/file/dcce2ddee6cc7597c859a.jpg` }, caption: up })
-  }
-  })*/
-
-  //==============================
-// ... previous code above remains unchanged ...
-
-if (connection === 'open') {
+  } else if (connection === 'open') {
   console.log('🕹️ Installing Plugins')
   const path = require('path');
   fs.readdirSync("./plugins/").forEach((plugin) => {
