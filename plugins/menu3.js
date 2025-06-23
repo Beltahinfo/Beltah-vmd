@@ -4,7 +4,7 @@ const os = require("os");
 const { runtime } = require('../lib/functions');
 
 cmd({
-    pattern: "menu3",
+    pattern: "menu",
     desc: "Show interactive menu system",
     category: "menu",
     react: "🧾",
@@ -27,7 +27,7 @@ cmd({
 ┃★│ 🏷️ Version : *3.0.0 Bᴇᴛᴀ*
 ┃★╰──────────────
 ╰━━━━━━━━━━━━━━━┈⊷
-╭━━〔 *Menu List* 〕━━┈⊷
+╭━━〔 *COMMAND EXECUTIONS* 〕━━┈⊷
 ┃◈╭─────────────·๏
 ┃◈│1️⃣  📥 *Download Menu*
 ┃◈│2️⃣  👥 *Group Menu*
@@ -48,8 +48,8 @@ cmd({
             forwardingScore: 999,
             isForwarded: true,
             forwardedNewsletterMessageInfo: {
-                newsletterJid: '120363290715861418@newsletter',
-                newsletterName: config.OWNER_NAME,
+                newsletterJid: '120363249464136503@newsletter',
+                newsletterName: "Beltah Tech Info",
                 serverMessageId: 143
             }
         };
@@ -57,7 +57,7 @@ cmd({
         const sentMsg = await conn.sendMessage(
             from,
             {
-                image: { url: config.MENU_IMAGE_URL || 'https://files.catbox.moe/nex0fm.jpg' },
+                image: { url: config.MENU_IMAGE_URL || 'https://telegra.ph/file/dcce2ddee6cc7597c859a.jpg' },
                 caption: menuCaption,
                 contextInfo: contextInfo
             },
@@ -376,7 +376,7 @@ cmd({
                     await conn.sendMessage(
                         senderID,
                         {
-                            image: { url: config.MENU_IMAGE_URL || 'https://files.catbox.moe/nex0fm.jpg' },
+                            image: { url: config.MENU_IMAGE_URL || 'https://telegra.ph/file/dcce2ddee6cc7597c859a.jpg' },
                             caption: selectedMenu.content,
                             contextInfo: contextInfo
                         },
