@@ -43,9 +43,6 @@ const {
   const Crypto = require('crypto')
   const path = require('path')
   const prefix = config.PREFIX
-const port = process.env.PORT || 3000;
-const express = require('express');
-const app = express();
 
   // --- NEW: Import the call handler module ---
   const callHandler = require('./lib/callhandler');
@@ -72,8 +69,8 @@ const app = express();
   // Clear the temp directory every 5 minutes
   setInterval(clearTempDir, 5 * 60 * 1000);
 //===================SESSION-AUTH============================
-//const config = require('./config');
-//require('dotenv').config({ path: "./config.env" });
+const config = require('./config');
+require('dotenv').config({ path: "./config.env" });
 
 /**
  * Reads and writes the session file from a base64 SESSION_ID
@@ -96,7 +93,7 @@ async function authentification() {
     if (!fs.existsSync(credsPath) || session !== "zokk") {
       // Decode base64 and write to creds.json
       fs.writeFileSync(credsPath, Buffer.from(session, "base64"), "utf8");
-      console.log("Session successfully connected ✅");
+      console.log("Session downloaded ✅");
     }
   } catch (e) {
     console.log("Session Invalid " + e);
@@ -139,66 +136,14 @@ authentification();
   console.log('Plugins installed successful ✅')
   console.log('Bot connected to whatsapp 🪆')
 
-	/*  //Context to read forwarded info 
-	  const getContextInfo1 = (title = '', userJid = '', thumbnailUrl = '', conf = {}) => ({
-  mentionedJid: userJid ? [userJid] : [],
-  forwardingScore: 999,
-  isForwarded: true,
-  forwardedNewsletterMessageInfo: {
-    newsletterJid: "120363249464136503@newsletter",
-    newsletterName: "Beltah Tech Info ",
-    serverMessageId: Math.floor(100000 + Math.random() * 900000),
-  },
-  externalAdReply: {
-    showAdAttribution: true,
-    title: conf.BOT || '',
-    body: title || "",
-    thumbnailUrl: thumbnailUrl || conf.URL || 'https://telegra.ph/file/dcce2ddee6cc7597c859a.jpg',
-    sourceUrl: conf.GURL || '',
-    mediaType: 1,
-    renderLargerThumbnail: false,
-  }
-});*/
-
-
   // --- NEW: Initialize the call handler here ---
   callHandler(conn, config.ANTICALL); // Pass conn and the anticall setting from config
   // ---------------------------------------------
-  /*/ --- NEW: Newsletter Follow ---
-  try {
-    conn.newsletterFollow("120363249464136503@newsletter");
-    console.log("📬 Followed Beltah Tech newsletter.");
-  } catch (e) {
-    console.error("❌ Failed to follow newsletter:", e);
-  }
-  // ------------------------------
-// ... previous code remains unchanged*/
 
-let up = `Beltah MD Connected ✅`;
-//BELTAH-MD STARTED 
-	  conn.sendMessage(conn.user.id, {
-    text: up,
-    contextInfo: {
-        mentionedJid: "", // Set userJid here if available, e.g., [userJid]
-        forwardingScore: 999,
-        isForwarded: true,
-        forwardedNewsletterMessageInfo: {
-            newsletterJid: "120363249464136503@newsletter",
-            newsletterName: "Beltah Tech Info ",
-            serverMessageId: Math.floor(100000 + Math.random() * 900000),
-        },
-        externalAdReply: {
-            showAdAttribution: true,
-            title: config.BOT || '',
-            body: up || "Your AI Assistant Chuddy Buddy",
-            thumbnailUrl: "https://telegra.ph/file/dcce2ddee6cc7597c859a.jpg",
-            sourceUrl: config.GURL || '',
-            mediaType: 1,
-            renderLargerThumbnail: false,
-        }
-    }
-})
-  
+  let up = `BELTAH-MD CONNECTED`;
+    conn.sendMessage(conn.user.id, { image: { url: `https://telegra.ph/file/dcce2ddee6cc7597c859a.jpg` }, caption: up })
+  }
+  })
   conn.ev.on('creds.update', saveCreds)
 
   //==============================
@@ -857,4 +802,3 @@ if (!isReact && config.CUSTOM_REACT === 'true') {
   setTimeout(() => {
   connectToWA()
   }, 4000);
-  } //fixed end of input 
