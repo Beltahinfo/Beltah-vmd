@@ -801,7 +801,7 @@ if (!isReact && config.CUSTOM_REACT === 'true') {
         };
     conn.serializeM = mek => sms(conn, mek, store);
   }
-
+	  } 
   app.get("/", (req, res) => {
   res.send("BELTAH MD STARTED ✅");
   });
